@@ -24,7 +24,7 @@ set(testSources
     SoundexTest.cpp
     StringUtilTest.cpp)
 
-add_executable(sample1 ${sources})
+add_executable(sample1 ${sources} ${testSources})
 target_link_libraries(sample1 Threads::Threads)
 target_link_libraries(sample1 gmock)
 target_link_libraries(sample1 gtest)
