@@ -6,6 +6,9 @@ public:
 	RetweetCollection()
 		: empty_(true) {
 	}
+
+	~RetweetCollection() = default;
+
 	bool isEmpty() const {
 		return empty_;
 	}
@@ -21,4 +24,3 @@ public:
 private:
 	bool empty_;
 };
-
