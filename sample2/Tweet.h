@@ -35,10 +35,14 @@ public:
 	{
 	}
 
-	Tweet& operator=(Tweet other)
+	// classes will have a default copy assignment operator
+	Tweet& operator=(const Tweet& other)
 	{
-		std::swap(_msg, other._msg);
-		std::swap(_user, other._user);
+		if(&other == this)
+			return *this;
+
+		_msg = other._msg;
+		_user = other._user;
 		return *this;
 	}
 private:
