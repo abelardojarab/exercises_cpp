@@ -35,6 +35,12 @@ public:
 	{
 	}
 
+	Tweet& operator=(Tweet other)
+	{
+		std::swap(_msg, other._msg);
+		std::swap(_user, other._user);
+		return *this;
+	}
 private:
 	string _msg;
 	string _user;

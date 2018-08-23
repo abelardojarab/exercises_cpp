@@ -1,5 +1,7 @@
 #pragma once
 #include "Tweet.h"
+#include <list>
+
 class RetweetCollection
 {
 public:
@@ -10,17 +12,20 @@ public:
 	~RetweetCollection() = default;
 
 	bool isEmpty() const {
-		return empty_;
+		return tweet_list_.empty();
 	}
 	void add(const Tweet& tweet) {
-		empty_ = false;
+		tweet_list_.push_back(tweet);
 	}
-	void remove(const Tweet& tweet) {
-		empty_ = true;
+	void remove(Tweet& tweet) {
+		tweet = tweet_list_.front();
+		tweet_list_.pop_front();
 	}
+
 	unsigned int size() const {
-		return isEmpty() ? 0 : 1;
+		return tweet_list_.size();
 	}
 private:
+	list<Tweet> tweet_list_;
 	bool empty_;
 };

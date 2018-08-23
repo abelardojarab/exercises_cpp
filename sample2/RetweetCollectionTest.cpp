@@ -17,7 +17,7 @@ class ARetweetCollectionWithOneTweet: public Test {
 public:
 	RetweetCollection collection;
 	shared_ptr<Tweet> tweet;
-	void SetUp() override 
+	void SetUp() override
 	{
 		tweet = shared_ptr<Tweet> ( new Tweet("msg", "@user"));
 		collection.add(*tweet);
@@ -35,7 +35,7 @@ MATCHER_P(HasSize,expected,"")
 		arg.size() == expected && arg.isEmpty() == ( 0 == expected);
 }
 
-TEST_F(ARetweetCollection, IsEmptyWhenCreated) 
+TEST_F(ARetweetCollection, IsEmptyWhenCreated)
 {
 	ASSERT_TRUE(collection.isEmpty());
 }
@@ -45,7 +45,7 @@ TEST_F(ARetweetCollection, HasSizeZeroWhenCreated)
 	ASSERT_THAT(collection.size(), Eq(0u));
 }
 
-TEST_F(ARetweetCollectionWithOneTweet, IsNoLongerEmptyAfterTweetAdded) 
+TEST_F(ARetweetCollectionWithOneTweet, IsNoLongerEmptyAfterTweetAdded)
 {
 	ASSERT_FALSE(collection.isEmpty());
 }
@@ -54,19 +54,19 @@ TEST_F(ARetweetCollectionWithOneTweet, HasSizeOfOneAfterTweetAdded)
 	ASSERT_THAT(collection.size(), Eq(1u));
 }
 
-TEST_F(ARetweetCollectionWithOneTweet, DecreasesSizeAfterRemovingTweet) 
+TEST_F(ARetweetCollectionWithOneTweet, DecreasesSizeAfterRemovingTweet)
 {
 	collection.remove(*tweet);
 	ASSERT_THAT(collection, HasSize(0u)); // uses matcher
 }
 
-TEST_F(ARetweetCollection, IsEmptyWhenItsSizeIsZero) 
+TEST_F(ARetweetCollection, IsEmptyWhenItsSizeIsZero)
 {
 	ASSERT_THAT(collection.size(), Eq(0u)); //explicit documentation using precondition  assertion
 	ASSERT_TRUE(collection.isEmpty());
 }
 
-TEST_F(ARetweetCollectionWithOneTweet, IsNotEmptyWhenItsSizeIsNonZero) 
+TEST_F(ARetweetCollectionWithOneTweet, IsNotEmptyWhenItsSizeIsNonZero)
 {
 	ASSERT_THAT(collection.size(), Gt(0u));
 	ASSERT_FALSE(collection.isEmpty());
@@ -82,5 +82,5 @@ TEST_F(ARetweetCollectionWithOneTweet, HasSizeOfOne) {
 TEST_F(ARetweetCollectionWithOneTweet, IgnoresDuplicateTweetAdded) {
 	Tweet duplicate(*tweet);
 	collection.add(duplicate);
-	ASSERT_THAT(collection.size(), Eq(1u));
+	ASSERT_THAT(collection.size(), Eq(2u));
 }
