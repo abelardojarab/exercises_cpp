@@ -17,6 +17,7 @@ AssertionResult ContainsString(	const string& expected,const string& actual)
 
 TEST(ATweet, RequiresUserToStartWithAtSign) {
 	string invalidUser("notStartingWith@");
+
 	ASSERT_ANY_THROW(Tweet tweet("msg", invalidUser));
 }
 
@@ -26,7 +27,7 @@ TEST(ATweet, UserNameExceptionMessageContainsText_is_not_a_valid_user_) {
 		Tweet tweet("msg", invalidUser);
 		FAIL();
 	}
-	catch (const InvalidUserException& exception) 
+	catch (const InvalidUserException& exception)
 	{
 		ASSERT_TRUE(ContainsString("is not a valid user",string(exception.what())));
 		//could have used a matcher macro with Contains too apparently

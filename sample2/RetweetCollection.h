@@ -22,8 +22,10 @@ public:
 		tweet_list_.pop_front();
 	}
 
+
 	unsigned int size() const {
 		return tweet_list_.size();
+
 	}
 private:
 	list<Tweet> tweet_list_;
