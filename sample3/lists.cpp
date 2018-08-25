@@ -9,6 +9,7 @@
 class dog
 {
 public:
+    atomic_bool_t x;
 	std::string name;
 
 };
