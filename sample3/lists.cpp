@@ -5,11 +5,12 @@
 #include <algorithm>
 #include <memory>
 #include <map>
+#include <atomic>
 
 class dog
 {
 public:
-    atomic_bool_t x;
+    std::atomic<bool> x;
 	std::string name;
 
 };
